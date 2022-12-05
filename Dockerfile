@@ -1,4 +1,4 @@
-FROM jupyter/base-notebook
+FROM jupyter/base-notebook@sha256:414d9ab1ab928d55c7c841440518315e701775c2670a156e78f97113b1cf9c6a
 
 # Install from requirements.txt file
 COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/
