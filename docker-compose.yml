@@ -4,7 +4,7 @@ services:
   jupyter:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_jupyter
       network: host
     restart: unless-stopped
     ports:
@@ -13,4 +13,14 @@ services:
       - ./jupyter/:/home/jovyan/notebooks/
       - ./requirements.txt:/tmp/requirements.txt
     command: ["start.sh", "jupyter", "lab", "--ServerApp.token=''"]
-
+  pypy:
+    build:
+      context: .
+      dockerfile: Dockerfile_pypy
+      network: host
+    restart: unless-stopped
+    environment:
+      - FNAME=day19
+    volumes:
+      - ./jupyter/:/home/jovyan/notebooks/
+    command: ["bash", "./use_pypy.sh"]
