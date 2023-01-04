@@ -1,0 +1,10 @@
+FROM pypy@sha256:54182fe607464a0b1371736f26e69fa7798a238f5362c971b7621a3e850f6565
+
+ENV PYTHONUNBUFFERED=1
+
+# Install from requirements.txt file
+COPY --chown=${NB_UID}:${NB_GID} requirements_pypy.txt /tmp/requirements.txt
+RUN pip install --quiet --no-cache-dir --requirement /tmp/requirements.txt 
+
+WORKDIR /home/jovyan/notebooks/adventofcode2022
+
