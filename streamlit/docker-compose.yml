@@ -1,0 +1,22 @@
+services:
+  barfi:
+    build:
+      context: .
+    restart: unless-stopped
+    environment:
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=False
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./apps:/src/apps
+    command:
+      - uv
+      - run
+      - streamlit
+      - run
+      - ./apps/2025_day09.py
+      - --server.port=8501
+      - --server.address=0.0.0.0
+      - --server.fileWatcherType=poll       # watch for changed files
+      - --server.headless=True              # do not open browser
+      - --server.runOnSave=True             # Automatically rerun script when the file is modified on disk.
