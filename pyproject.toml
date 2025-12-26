@@ -1,0 +1,11 @@
+[project]
+name = "aoc"
+version = "0.1.0"
+requires-python = ">=3.11.9"
+dependencies = [
+    "nbconvert>=7.16.6",
+    "numpy>=2.4.0",
+    "plotly>=6.5.0",
+    "scipy>=1.16.3",
+    "z3-solver>=4.15.4.0",
+]
